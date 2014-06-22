@@ -41,7 +41,7 @@ cn= 99
 computePlainF :: PlainF -> IO ()
 computePlainF f = whnfIO $ cairoRaster f w h
 computeRepaFP :: RepaF -> IO ()
-computeRepaFP f = whnfIO $ computeDImageP w h $ \d -> fromFunction d f
+computeRepaFP f = whnfIO $ computeDImageP (\d -> fromFunction d f) w h
 
 repaF :: String -> RepaF -> Benchmark
 repaF name fun = bench name $ computeRepaFP fun

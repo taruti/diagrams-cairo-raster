@@ -32,10 +32,10 @@ import qualified Graphics.Rendering.Cairo        as C
 -- of the array which may be /different/ from the image width and height specified
 -- due to Cairo requirements of image data alignment. The 'DIM2' is in the form
 -- @(Z :. height :. width)@.
-computeDImageP :: Load r1 sh CairoColor => Int -> Int -> (DIM2 -> Array r1 sh CairoColor) -> IO (Diagram Cairo R2)
-computeDImageP !w0 !h0 !arr = do
+computeDImageP :: Load r1 sh CairoColor => (DIM2 -> Array r1 sh CairoColor) -> Int -> Int -> IO (Diagram Cairo R2)
+computeDImageP !afun !w0 !h0 = do
   (s,sd,w',_) <- cairoBitmapArray w0 h0
-  computeIntoP sd $ arr (Z :. h0 :. w')
+  computeIntoP sd $ afun (Z :. h0 :. w')
   fmap image $ cairoSurfaceImage s w0 h0
 
 {-# INLINE computeIntoP #-}

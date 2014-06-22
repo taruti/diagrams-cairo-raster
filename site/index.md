@@ -13,3 +13,13 @@ is very small.
 * [Diagrams.Backend.Cairo.Raster](https://taruti.github.io/diagrams-cairo-raster/haddock/Diagrams-Backend-Cairo-Raster.html)
 * [Diagrams.Backend.Cairo.Raster.Internal](https://taruti.github.io/diagrams-cairo-raster/haddock/Diagrams-Backend-Cairo-Raster-Internal.html)
 * [Diagrams.Backend.Cairo.Raster.Repa](https://taruti.github.io/diagrams-cairo-raster/haddock/Diagrams-Backend-Cairo-Raster-Repa.html)
+
+### Plain Example
+
+```haskell
+dia :: Int -> Int -> IO (Diagram Cairo R2)
+dia = cairoRaster cplus
+
+cplus :: Int -> Int -> CairoColor
+cplus x y = crgb x y (x*y)
+```
