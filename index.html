@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" media="screen" />
 
     <title>Diagrams-cairo-raster</title>
   </head>
@@ -34,6 +35,12 @@
 <li><a href="https://taruti.github.io/diagrams-cairo-raster/haddock/Diagrams-Backend-Cairo-Raster-Internal.html">Diagrams.Backend.Cairo.Raster.Internal</a></li>
 <li><a href="https://taruti.github.io/diagrams-cairo-raster/haddock/Diagrams-Backend-Cairo-Raster-Repa.html">Diagrams.Backend.Cairo.Raster.Repa</a></li>
 </ul>
+<h3 id="plain-example">Plain Example</h3>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">dia ::</span> <span class="dt">Int</span> <span class="ot">-></span> <span class="dt">Int</span> <span class="ot">-></span> <span class="dt">IO</span> (<span class="dt">Diagram</span> <span class="dt">Cairo</span> <span class="dt">R2</span>)
+dia <span class="fu">=</span> cairoRaster cplus
+
+<span class="ot">cplus ::</span> <span class="dt">Int</span> <span class="ot">-></span> <span class="dt">Int</span> <span class="ot">-></span> <span class="dt">CairoColor</span>
+cplus x y <span class="fu">=</span> crgb x y (x<span class="fu">*</span>y)</code></pre>
       </section>
     </div>
   </body>
