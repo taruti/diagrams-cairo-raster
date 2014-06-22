@@ -41,6 +41,12 @@ dia <span class="fu">=</span> cairoRaster cplus
 
 <span class="ot">cplus ::</span> <span class="dt">Int</span> <span class="ot">-></span> <span class="dt">Int</span> <span class="ot">-></span> <span class="dt">CairoColor</span>
 cplus x y <span class="fu">=</span> crgb x y (x<span class="fu">*</span>y)</code></pre>
+<h3 id="repa-example">Repa Example</h3>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">dia ::</span> <span class="dt">Int</span> <span class="ot">-></span> <span class="dt">Int</span> <span class="ot">-></span> <span class="dt">IO</span> (<span class="dt">Diagram</span> <span class="dt">Cairo</span> <span class="dt">R2</span>)
+dia <span class="fu">=</span> cairoRepa (\d <span class="ot">-></span> fromFunction d rplus)
+
+<span class="ot">rplus ::</span> <span class="dt">DIM2</span> <span class="ot">-></span> <span class="dt">CairoColor</span>
+rplus (<span class="dt">Z</span> <span class="fu">:.</span> y <span class="fu">:.</span> x) <span class="fu">=</span> crgb x y (x<span class="fu">*</span>y)</code></pre>
       </section>
     </div>
   </body>
