@@ -1,6 +1,7 @@
 ---
 title: Diagrams-cairo-raster
 homepage: https://taruti.github.io/diagrams-cairo-raster
+license: BSD3
 ---
 
 ### Installing patched diagrams-lib (required)
