@@ -46,7 +46,7 @@ computeIntoP !sd !arr = loadP arr (CF sd)
 {-# INLINE computeIntoS #-}
 -- | Low-level primitive: Compute a 'repa' array into a 'SurfaceData' sequentally.
 computeIntoS :: Load r1 sh CairoColor => C.SurfaceData Int CairoColor -> Array r1 sh CairoColor -> IO ()
-computeIntoS !sd !arr = loadP arr (CF sd)
+computeIntoS !sd !arr = loadS arr (CF sd)
 
 data CF
 instance Target CF CairoColor where
