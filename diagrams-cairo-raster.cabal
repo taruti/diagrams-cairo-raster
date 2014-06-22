@@ -1,0 +1,31 @@
+Name:                diagrams-cairo-raster
+Version:             0.0
+Synopsis:            Cairo specific native raster images (bitmaps) for Diagrams with repa support.
+Description:         Cairo specific native raster images (bitmaps) for Diagrams with repa support.
+Homepage:            http://taruti.github.io/diagrams-cairo-raster
+License:             BSD3
+License-file:        LICENSE
+Author:              Taru Karttunen
+Maintainer:          taruti@taruti.net
+Bug-reports:         http://github.com/taruti/diagrams-cairo-raster/issues
+Category:            Graphics
+Build-type:          Simple
+Cabal-version:       >=1.10
+Tested-with:         GHC == 7.8.2
+Source-repository head
+  type:     git
+  location: http://github.com/taruti/diagrams-cairo-raster.git
+
+Library
+  Exposed-modules:     Diagrams.Backend.Cairo.Raster
+  Hs-source-dirs:      src
+  Build-depends:       base >= 4.2 && < 4.8,
+                       array >= 0.2.0.0 && < 0.6,
+                       diagrams-cairo >= 1.2 && < 1.3,
+                       diagrams-core >= 1.2 && < 1.3,
+                       diagrams-lib >= 1.2 && < 1.3,
+                       cairo >= 0.12.4 && < 0.13,
+                       JuicyPixels >= 3.1.3.2 && < 3.2,
+                       repa >= 3.2.5.1 && < 3.3
+  default-language:    Haskell2010
+
