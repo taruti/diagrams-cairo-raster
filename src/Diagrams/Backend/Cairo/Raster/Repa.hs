@@ -14,7 +14,7 @@ Stability   : experimental
 Draw 'repa' arrays into Cairo diagrams.
 -}
 module Diagrams.Backend.Cairo.Raster.Repa(
-  computeDImageP, computeIntoP,
+  cairoRepa, computeIntoP, computeIntoS
   ) where
 
 import           Data.Array.Base                 (MArray (unsafeWrite))
@@ -26,22 +26,27 @@ import           Diagrams.Prelude
 import qualified Graphics.Rendering.Cairo        as C
 
 
-{-# INLINE computeDImageP #-}
+{-# INLINE cairoRepa #-}
 -- | Compute a DImage from a 'repa' array with the supplied width and height.
 -- The function calculating the array receives a 'DIM2' containing the dimensions
 -- of the array which may be /different/ from the image width and height specified
 -- due to Cairo requirements of image data alignment. The 'DIM2' is in the form
 -- @(Z :. height :. width)@.
-computeDImageP :: Load r1 sh CairoColor => (DIM2 -> Array r1 sh CairoColor) -> Int -> Int -> IO (Diagram Cairo R2)
-computeDImageP !afun !w0 !h0 = do
+cairoRepa :: Load r1 sh CairoColor => (DIM2 -> Array r1 sh CairoColor) -> Int -> Int -> IO (Diagram Cairo R2)
+cairoRepa !afun !w0 !h0 = do
   (s,sd,w',_) <- cairoBitmapArray w0 h0
   computeIntoP sd $ afun (Z :. h0 :. w')
   fmap image $ cairoSurfaceImage s w0 h0
 
 {-# INLINE computeIntoP #-}
--- | Low-level primitive: Compute a 'repa' array into a 'SurfaceData'.
+-- | Low-level primitive: Compute a 'repa' array into a 'SurfaceData' in parallel.
 computeIntoP :: Load r1 sh CairoColor => C.SurfaceData Int CairoColor -> Array r1 sh CairoColor -> IO ()
 computeIntoP !sd !arr = loadP arr (CF sd)
+
+{-# INLINE computeIntoS #-}
+-- | Low-level primitive: Compute a 'repa' array into a 'SurfaceData' sequentally.
+computeIntoS :: Load r1 sh CairoColor => C.SurfaceData Int CairoColor -> Array r1 sh CairoColor -> IO ()
+computeIntoS !sd !arr = loadP arr (CF sd)
 
 data CF
 instance Target CF CairoColor where
