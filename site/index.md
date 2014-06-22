@@ -1,5 +1,6 @@
 ---
 title: Diagrams-cairo-raster
+homepage: https://taruti.github.io/diagrams-cairo-raster
 ---
 
 ### Installing patched diagrams-lib (required)
@@ -22,4 +23,14 @@ dia = cairoRaster cplus
 
 cplus :: Int -> Int -> CairoColor
 cplus x y = crgb x y (x*y)
+```
+
+### Repa Example
+
+```haskell
+dia :: Int -> Int -> IO (Diagram Cairo R2)
+dia = cairoRepa (\d -> fromFunction d rplus)
+
+rplus :: DIM2 -> CairoColor
+rplus (Z :. y :. x) = crgb x y (x*y)
 ```
