@@ -4,11 +4,13 @@ homepage: https://taruti.github.io/diagrams-cairo-raster
 license: BSD3
 ---
 
-### Installing patched diagrams-lib (required)
+### Installing git version of diagrams-lib (required)
 
-A [patched version](https://github.com/taruti/diagrams-lib) of diagrams-lib is needed.
-The [diff](https://github.com/taruti/diagrams-lib/commit/26afbac84973a15b7fb04fd8d62043105dc0d3ca)
-is very small.
+The git version of
+[diagrams-lib](https://github.com/taruti/diagrams-lib) is currently
+required. The relevant
+[commit](https://github.com/diagrams/diagrams-lib/commit/26afbac84973a15b7fb04fd8d62043105dc0d3ca)
+was merged on 2014-06-23.
 
 ### API documentation (haddock)
 
